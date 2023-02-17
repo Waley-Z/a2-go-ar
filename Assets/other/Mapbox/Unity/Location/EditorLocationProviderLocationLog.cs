@@ -36,11 +36,35 @@
 			base.Awake();
 			_logReader = new LocationLogReader(_locationLogFile.bytes);
 			_locationEnumerator = _logReader.GetLocations();
+            _currentLocation.LatitudeLongitude = new Vector2d(42.279594, -83.732124);
+        }
+
+        private void Update()
+        {
+			Vector2d deltaVec = Vector2d.zero;
+			if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+			{
+				deltaVec = new Vector2d(0, -1);
+			}
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            {
+                deltaVec = new Vector2d(0, 1);
+            }
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+            {
+                deltaVec = new Vector2d(1, 0);
+            }
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            {
+                deltaVec = new Vector2d(-1, 0);
+            }
+			_currentLocation.LatitudeLongitude += deltaVec * 0.001 * Time.deltaTime;
+			//print("Current location: " + _currentLocation.LatitudeLongitude);
 		}
 #endif
 
 
-		private void OnDestroy()
+        private void OnDestroy()
 		{
 			if (null != _locationEnumerator)
 			{
@@ -57,11 +81,13 @@
 
 		protected override void SetLocation()
 		{
-			if (null == _locationEnumerator) { return; }
+#if !UNITY_EDITOR
+            if (null == _locationEnumerator) { return; }
 
 			// no need to check if 'MoveNext()' returns false as LocationLogReader loops through log file
 			_locationEnumerator.MoveNext();
 			_currentLocation = _locationEnumerator.Current;
+#endif
 		}
 	}
 }
