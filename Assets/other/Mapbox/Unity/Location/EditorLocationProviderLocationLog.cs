@@ -36,8 +36,8 @@
 			base.Awake();
 			_logReader = new LocationLogReader(_locationLogFile.bytes);
 			_locationEnumerator = _logReader.GetLocations();
-            _currentLocation.LatitudeLongitude = new Vector2d(42.279594, -83.732124);
         }
+        static Vector2d	currentLatitudeLongitude = new Vector2d(42.279594, -83.732124);
 
         private void Update()
         {
@@ -58,7 +58,8 @@
             {
                 deltaVec = new Vector2d(-1, 0);
             }
-			_currentLocation.LatitudeLongitude += deltaVec * MoveSpeed * Time.deltaTime;
+            currentLatitudeLongitude += deltaVec * MoveSpeed * Time.deltaTime;
+            _currentLocation.LatitudeLongitude = currentLatitudeLongitude;
 			//print("Current location: " + _currentLocation.LatitudeLongitude);
 		}
 #endif
