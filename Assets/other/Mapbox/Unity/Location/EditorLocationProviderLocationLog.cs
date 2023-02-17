@@ -15,7 +15,7 @@
 	/// </summary>
 	public class EditorLocationProviderLocationLog : AbstractEditorLocationProvider
 	{
-
+		public float MoveSpeed = 0.001f;
 
 		/// <summary>
 		/// The mock "latitude, longitude" location, respresented with a string.
@@ -58,7 +58,7 @@
             {
                 deltaVec = new Vector2d(-1, 0);
             }
-			_currentLocation.LatitudeLongitude += deltaVec * 0.001 * Time.deltaTime;
+			_currentLocation.LatitudeLongitude += deltaVec * MoveSpeed * Time.deltaTime;
 			//print("Current location: " + _currentLocation.LatitudeLongitude);
 		}
 #endif
@@ -81,13 +81,11 @@
 
 		protected override void SetLocation()
 		{
-#if !UNITY_EDITOR
-            if (null == _locationEnumerator) { return; }
+   //         if (null == _locationEnumerator) { return; }
 
-			// no need to check if 'MoveNext()' returns false as LocationLogReader loops through log file
-			_locationEnumerator.MoveNext();
-			_currentLocation = _locationEnumerator.Current;
-#endif
+			//// no need to check if 'MoveNext()' returns false as LocationLogReader loops through log file
+			//_locationEnumerator.MoveNext();
+			//_currentLocation = _locationEnumerator.Current;
 		}
 	}
 }
