@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using Mapbox.Unity.Map;
+using Mapbox.Utils;
 public class GameManager : Manager<GameManager>
 {
     public enum SceneType
@@ -15,6 +16,7 @@ public class GameManager : Manager<GameManager>
 
     public GameScene[] SceneArray;
     public Image BlackScreen;
+    public static Vector2d targetPos;
 
     [System.Serializable]
     public class GameScene
@@ -39,6 +41,11 @@ public class GameManager : Manager<GameManager>
     private void Start()
     {
         StartSceneMusic(getSceneType(SceneManager.GetActiveScene().name));
+    }
+
+    public static void updateTargetPos(Vector2d pos)
+    {
+        targetPos = pos;
     }
 
     public static SceneType getSceneType(string name)

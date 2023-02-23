@@ -3,12 +3,13 @@
 	using Mapbox.Unity.Location;
 	using Mapbox.Unity.Map;
 	using UnityEngine;
+	using Mapbox.Unity.Utilities;
 
 	public class ImmediatePositionWithLocationProvider : MonoBehaviour
 	{
 
 		bool _isInitialized;
-
+		public AbstractMap map;
 		ILocationProvider _locationProvider;
 		ILocationProvider LocationProvider
 		{
@@ -29,6 +30,11 @@
 		{
 			LocationProviderFactory.Instance.mapManager.OnInitialized += () => _isInitialized = true;
 		}
+  //      private void Update()
+  //      {
+		//	GameManager.updateTargetPos(Edit.CurrentLocation.LatitudeLongitude);
+
+		//}
 
 		void LateUpdate()
 		{
