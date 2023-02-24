@@ -19,7 +19,7 @@ public class TreeSpawner : MonoBehaviour
             //Debug.Log("spawn");
             Vector3 pos = map.GeoToWorldPosition(tree.lat_long_coordinates, queryHeight: false);
             GameObject new_tree = Instantiate(tree1prefab, pos, Quaternion.identity);
-            new_tree.GetComponent<isTree>().lat_long_position = tree.lat_long_coordinates;
+            new_tree.GetComponent<IsTree>().lat_long_position = tree.lat_long_coordinates;
         }
     }
 

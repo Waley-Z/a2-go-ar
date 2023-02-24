@@ -25,6 +25,7 @@ public class ARCursor : MonoBehaviour
         if (result_hits.Count > 0) /* Change E */
         {
             cursor.SetPositionAndRotation(result_hits[0].pose.position, result_hits[0].pose.rotation);
+			//GameManager.updateTargetPos(_currentLocation.LatitudeLongitude);
         }
     }
 }

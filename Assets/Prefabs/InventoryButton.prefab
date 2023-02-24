@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3141205412606421478}
   - component: {fileID: 3669085184982450087}
   m_Layer: 5
-  m_Name: quantity_text
+  m_Name: QuantityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc6e56222aa8b149af6104aeb08037b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tree_prefab: {fileID: 351608699458520169, guid: 2e4a6720f3076634c8677cea7234acf1,
+  treePrefab: {fileID: 8851309883806108098, guid: 2e4a6720f3076634c8677cea7234acf1,
     type: 3}
   spawnSound: {fileID: 8300000, guid: 175157b22640ac040aa2ac9284701abf, type: 3}
   spawntext: {fileID: 0}

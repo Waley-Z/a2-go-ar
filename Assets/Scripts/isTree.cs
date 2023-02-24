@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mapbox.Utils;
 using Mapbox.Unity.Map;
-public class isTree : MonoBehaviour
+public class IsTree : MonoBehaviour
 {
     // Start is called before the first frame update
     public Vector2d lat_long_position;

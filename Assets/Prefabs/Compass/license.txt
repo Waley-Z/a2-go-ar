@@ -1,0 +1,11 @@
+Model Information:
+* title:	Compass
+* source:	https://sketchfab.com/3d-models/compass-cdd32ea3d698442db9bc1a6ba6cff26b
+* author:	AyoubBani (https://sketchfab.com/AyoubBani)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Compass" (https://sketchfab.com/3d-models/compass-cdd32ea3d698442db9bc1a6ba6cff26b) by AyoubBani (https://sketchfab.com/AyoubBani) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

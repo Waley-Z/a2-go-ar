@@ -16,7 +16,7 @@ public class GameManager : Manager<GameManager>
 
     public GameScene[] SceneArray;
     public Image BlackScreen;
-    public static Vector2d targetPos;
+    public static Vector2d targetPos; // AR cursor position
 
     [System.Serializable]
     public class GameScene
