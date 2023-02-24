@@ -23,6 +23,7 @@ public class SoundManager : Manager<SoundManager>
         // music
         MusicExploration,
         MusicInteraction,
+        MusicBattle,
 
         //// player
         //Jetpack,

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mapbox.Utils;
 using Mapbox.Unity.Map;
+
 public class IsTree : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Vector2d lat_long_position;
+    public Tree tree;
     Vector3 offset;
     AbstractMap map;
     void Start()
@@ -18,7 +18,7 @@ public class IsTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        transform.position = map.GeoToWorldPosition(lat_long_position, queryHeight: false) + offset;
+        transform.position = map.GeoToWorldPosition(tree.lat_long_coordinates, queryHeight: false) + offset;
+        //transform.localScale = tree.growth_progress * transform.localScale; // TODO
     }
 }

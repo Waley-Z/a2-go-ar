@@ -165,7 +165,7 @@ RectTransform:
   m_GameObject: {fileID: 8328434241610683050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.59, y: 1.59, z: 1.59}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1911522777640486621}
@@ -260,9 +260,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1777002009}
-        m_TargetAssemblyTypeName: InventorySystem, Assembly-CSharp
-        m_MethodName: SpawnTree
-        m_Mode: 5
+        m_TargetAssemblyTypeName: InventoryButton, Assembly-CSharp
+        m_MethodName: PlantTree
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -379,7 +379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc6e56222aa8b149af6104aeb08037b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treePrefab: {fileID: 8851309883806108098, guid: 2e4a6720f3076634c8677cea7234acf1,
-    type: 3}
+  treeType: 0
+  quantityText: {fileID: 3669085184982450087}
   spawnSound: {fileID: 8300000, guid: 175157b22640ac040aa2ac9284701abf, type: 3}
-  spawntext: {fileID: 0}

@@ -53,6 +53,10 @@ MonoBehaviour:
     mixer: {fileID: -6090420109218592179, guid: abb9717b694f45e4a9c01b45ce53613c,
       type: 2}
     audioClip: {fileID: 8300000, guid: 1c09cad4ffd124b458535ec2f879c4b4, type: 3}
+  - sound: 2
+    mixer: {fileID: -6090420109218592179, guid: abb9717b694f45e4a9c01b45ce53613c,
+      type: 2}
+    audioClip: {fileID: 8300000, guid: 30b7a457ccafdf4469b9b2361fe858aa, type: 3}
   snapShotMain: {fileID: 24500006, guid: abb9717b694f45e4a9c01b45ce53613c, type: 2}
   snapShotPause: {fileID: -869125258791621446, guid: abb9717b694f45e4a9c01b45ce53613c,
     type: 2}

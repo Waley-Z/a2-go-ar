@@ -4,28 +4,40 @@ using UnityEngine;
 using Mapbox;
 using Mapbox.Utils;
 using Mapbox.Unity.Map;
+using static GameManager;
+
 public class TreeSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject tree1prefab;
-    public AbstractMap map;
-    void Start()
+    public TreePrefab[] TreePrefabs;
+    AbstractMap map;
+
+    [System.Serializable]
+    public class TreePrefab
     {
-        foreach (TreeDatum tree in TreeDataManager.GetTreeData())
-        {
-            //Vector3 pos = map.GeoToWorldPosition(tree.lat_long_coordinates, queryHeight: false);
-            //Debug.Log(pos);
-            //Debug.Log(tree.lat_long_coordinates);
-            //Debug.Log("spawn");
-            Vector3 pos = map.GeoToWorldPosition(tree.lat_long_coordinates, queryHeight: false);
-            GameObject new_tree = Instantiate(tree1prefab, pos, Quaternion.identity);
-            new_tree.GetComponent<IsTree>().lat_long_position = tree.lat_long_coordinates;
-        }
+        public Tree.TreeType treeType;
+        public GameObject treePrefab;
     }
 
-    // Update is called once per frame
-    void Update()
+    GameObject getTreePrefab(Tree.TreeType treeType)
     {
-        
+        foreach (TreePrefab tp in TreePrefabs)
+        {
+            if (tp.treeType == treeType)
+            {
+                return tp.treePrefab;
+            }
+        }
+        Debug.LogError($"Prefab not found: {treeType}");
+        return TreePrefabs[0].treePrefab;
+    }
+
+    void Start()
+    {
+        foreach (Tree tree in InventoryManager.Trees)
+        {
+            Vector3 pos = map.GeoToWorldPosition(tree.lat_long_coordinates, queryHeight: false);
+            GameObject new_tree = Instantiate(getTreePrefab(tree.tree_type), pos, Quaternion.identity);
+            new_tree.GetComponent<IsTree>().tree = tree;
+        }
     }
 }
