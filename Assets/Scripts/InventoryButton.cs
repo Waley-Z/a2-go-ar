@@ -20,7 +20,9 @@ public class InventoryButton : MonoBehaviour
         {
             GetComponent<AudioSource>().PlayOneShot(spawnSound);
             StartCoroutine(UIManager.Instance.showSpawnText());
-            InventoryManager.SpawnTree(Tree.TreeType.T1, GameManager.targetPos, 0.0f, 1.0f);
+            int index = InventoryManager.SpawnTree(treeType, GameManager.targetPos, 0.0f, 1.0f);
+            Debug.Log("plant a tree " + InventoryManager.Trees.Count + index);
+            GameObject.Find("Main Camera").GetComponent<InteractSpawner>().spawnObjects(InventoryManager.Trees[index]);
         }
     }
 

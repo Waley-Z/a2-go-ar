@@ -16,6 +16,8 @@ public class GameManager : Manager<GameManager>
 
     public GameScene[] SceneArray;
     public Image BlackScreen;
+    public static Tree nearestTree; // The nearest tree shown in the inventory mode
+    public static int nearestTreeIndex;
     public static Vector2d targetPos; // AR cursor position
 
     [System.Serializable]
@@ -97,7 +99,16 @@ public class GameManager : Manager<GameManager>
                 SoundManager.StartBGM(SoundManager.Sound.MusicExploration);
                 break;
             case SceneType.Interaction:
-                SoundManager.StartBGM(SoundManager.Sound.MusicInteraction);
+                if (nearestTree != null && nearestTree.withSquirrel)
+                {
+                    SoundManager.StartBGM(SoundManager.Sound.MusicBattle);
+
+                }
+                else
+                {
+
+                    SoundManager.StartBGM(SoundManager.Sound.MusicInteraction);
+                }
                 break;
             default:
                 break;
