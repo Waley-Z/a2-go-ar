@@ -68,7 +68,7 @@ namespace Mapbox.Unity.Location
 		{
 			double debugAngle = Math.Atan2(Math.Sin(smoothed * DEG2RAD), Math.Cos(smoothed * DEG2RAD)) * RAD2DEG;
 			debugAngle = debugAngle < 0 ? debugAngle + 360 : debugAngle >= 360 ? debugAngle - 360 : debugAngle;
-			Debug.Log(string.Format("{0:0.000} => {1:0.000}", raw, smoothed));
+			//Debug.Log(string.Format("{0:0.000} => {1:0.000}", raw, smoothed));
 		}
 
 
