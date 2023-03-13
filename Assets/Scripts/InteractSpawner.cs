@@ -4,23 +4,33 @@ using UnityEngine;
 
 public class InteractSpawner : MonoBehaviour
 {
-    void Start()
+    public Transform cursor;
+    GameObject new_tree;
+
+    private void Update()
     {
-        SpawnInteractionTree(GameManager.nearestTree);
+        if (new_tree == null && cursor.position != Vector3.zero)
+        {
+            SpawnInteractionTree(GameManager.nearestTree);
+        }
     }
 
     public void SpawnInteractionTree(Tree tree)
     {
-        Vector3 posTree = transform.position + 50 * transform.forward;
         if (tree != null)
         {
-            GameObject new_tree = Instantiate(tree.treePrefab, posTree - Vector3.up * 5 + new Vector3(0f, 0, 20), Quaternion.Euler(90, 0, 0));
+            new_tree = Instantiate(tree.treePrefab);
+            new_tree.transform.SetPositionAndRotation(cursor.position, cursor.rotation);
             new_tree.GetComponent<IsTree>().tree = tree;
-            Debug.Log("spawn a tree in interactive mode");
+            new_tree.transform.localScale *= 0.1f;
+
             if (tree.withSquirrel)
             {
-                GameObject new_squirrel = Instantiate(InventoryManager.Instance.SquirrelPrefab, posTree - Vector3.up * 5 + new Vector3(5f, 0, 0), Quaternion.Euler(-90, 180, 0));
-                new_squirrel.GetComponent<isSquirreal>().originalPos = posTree - Vector3.up * 5;
+                GameObject new_squirrel = Instantiate(InventoryManager.Instance.SquirrelPrefab);
+                new_squirrel.transform.SetPositionAndRotation(cursor.position + new Vector3(0, 0, 2.5f), cursor.rotation);
+                new_squirrel.transform.localScale *= 0.1f;
+
+                new_squirrel.GetComponent<isSquirreal>().originalPos = cursor.position - Vector3.up * 5;
                 new_squirrel.GetComponent<isSquirreal>().tree = tree; // should be unnecessary
             }
         }

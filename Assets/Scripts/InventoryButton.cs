@@ -7,14 +7,13 @@ public class InventoryButton : MonoBehaviour
 {
     public Tree.TreeType treeType;
     public TextMeshProUGUI quantityText;
-    public AudioClip spawnSound;
 
     public void PlantTree()
     {
         if (GameManager.CurrentScene == GameManager.SceneType.Interaction
             && InventoryManager.UseSeeds(treeType))
         {
-            GetComponent<AudioSource>().PlayOneShot(spawnSound);
+            SoundManager.PlaySound(SoundManager.Sound.PlantSeed);
             StartCoroutine(UIManager.Instance.showSpawnText());
             int index = InventoryManager.AddTree(treeType, GameManager.targetPos);
             Debug.Log("plant a tree " + InventoryManager.Trees.Count + index);

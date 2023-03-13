@@ -14,7 +14,7 @@ public class InventoryManager : Manager<InventoryManager>
  
     public static float Currency = 30f;
     public static int numAcorns = 0;
-    public float squirrelSpawnTime = 10f;
+    public float squirrelSpawnTime = 60f;
     public GameObject SquirrelPrefab;
 
     void Start()
@@ -26,8 +26,8 @@ public class InventoryManager : Manager<InventoryManager>
         }
         Seeds[Tree.TreeType.T1] = 3;
         Discovered[Tree.TreeType.T1] = true;
-        InvokeRepeating("AdvanceTreeGrowth", 1f, 5f);
-        InvokeRepeating("spawnSquirrel", squirrelSpawnTime, squirrelSpawnTime);
+        InvokeRepeating("AdvanceTreeGrowth", 0, 5f);
+        InvokeRepeating("spawnSquirrel", 0, squirrelSpawnTime);
     }
 
     private void Update()
@@ -36,7 +36,8 @@ public class InventoryManager : Manager<InventoryManager>
         {
             if (tree.growth_progress >= 1f)
             {
-                Currency += tree.revenue_per_tick_upon_adulthood;
+                float scale = tree.withSquirrel ? 0.3f : 1f;
+                Currency += tree.revenue_per_tick_upon_adulthood * scale;
             }
         }
     }

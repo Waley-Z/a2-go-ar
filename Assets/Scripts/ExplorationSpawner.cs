@@ -16,7 +16,7 @@ public class ExplorationSpawner : MonoBehaviour
         {
             Vector3 pos = map.GeoToWorldPosition(tree.lat_long_coordinates, queryHeight: false);
             print("GeoToWorldPosition " + pos);
-            GameObject new_tree = Instantiate(tree.treePrefab, pos, Quaternion.Euler(90, 0, 0));
+            GameObject new_tree = Instantiate(tree.treePrefab, pos, Quaternion.identity);
             new_tree.GetComponent<IsTree>().tree = tree;
             if (tree.withSquirrel)
             {
@@ -29,8 +29,7 @@ public class ExplorationSpawner : MonoBehaviour
     {
         Vector3 pos = map.GeoToWorldPosition(tree.lat_long_coordinates, queryHeight: false);
         GameObject new_squirrel = Instantiate(InventoryManager.Instance.SquirrelPrefab,
-            pos + new Vector3(1f, 0, 0),
-            Quaternion.Euler(-90, 180, 0));
+            pos + new Vector3(2f, 0, 0), Quaternion.identity);
         new_squirrel.GetComponent<isSquirreal>().tree = tree;
         Debug.Log("spawn a squirrel");
     }

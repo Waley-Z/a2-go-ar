@@ -15,7 +15,8 @@ public class isSquirreal : MonoBehaviour
 
     void Start()
     {
-        map = GameObject.Find("LocationBasedGame").transform.Find("Map").GetComponent<AbstractMap>();
+        if (GameManager.CurrentScene == GameManager.SceneType.Exploration)
+            map = GameObject.Find("LocationBasedGame").transform.Find("Map").GetComponent<AbstractMap>();
         originalPos = transform.position;
     }
 
@@ -24,11 +25,11 @@ public class isSquirreal : MonoBehaviour
         if (GameManager.CurrentScene == GameManager.SceneType.Interaction)
         {
             //Vector3 dirVec = Vector3.right;
-            if (scale < -20)
+            if (scale < -2)
             {
                 isRight = true;
             }
-            if (scale > 20)
+            if (scale > 2)
             {
                 isRight = false;
             }
@@ -58,6 +59,7 @@ public class isSquirreal : MonoBehaviour
         }
         SoundManager.Instance.pauseBGM(1f);
         SoundManager.StartBGM(SoundManager.Sound.MusicInteraction);
+        SoundManager.PlaySound(SoundManager.Sound.DefeatSquirrel);
         GameManager.nearestTree.withSquirrel = false;
         Debug.Log("destroy squirrel");
         foreach (Tree tree in InventoryManager.Trees)

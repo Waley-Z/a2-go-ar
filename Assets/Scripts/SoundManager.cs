@@ -25,16 +25,9 @@ public class SoundManager : Manager<SoundManager>
         MusicInteraction,
         MusicBattle,
 
-        //// player
-        //Jetpack,
-        //BuildBlock,
-        //DeleteBlock, // blank
-        //BuildFactory,
-        //CollectResource,
-
-        //// game
-        //UIClick,
-        //UISelect, 
+        DefeatSquirrel,
+        PlantSeed,
+        LaunchAcorn,
     }
 
     public static GameObject BGM_loop;
