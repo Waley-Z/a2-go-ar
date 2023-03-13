@@ -9,23 +9,10 @@ public class ImageBonus : MonoBehaviour
 {
     [SerializeField]
     
-    private void Awake()
-    {
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnEnable()
     {
         if (!InventoryManager.isBonusActivated)
-            InventoryManager.Currency += 10;
+            InventoryManager.Currency += 100;
         InventoryManager.isBonusActivated = true;
     }
 }

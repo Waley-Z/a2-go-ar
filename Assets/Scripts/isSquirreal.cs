@@ -11,7 +11,7 @@ public class isSquirreal : MonoBehaviour
     public float walkSpeed = 15f;
     float scale = 0f;
     bool isRight = true;
-    public Vector3 originalPos;
+    Vector3 originalPos;
 
     void Start()
     {

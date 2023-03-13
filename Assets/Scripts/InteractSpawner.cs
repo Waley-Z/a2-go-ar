@@ -28,9 +28,8 @@ public class InteractSpawner : MonoBehaviour
             {
                 GameObject new_squirrel = Instantiate(InventoryManager.Instance.SquirrelPrefab);
                 new_squirrel.transform.SetPositionAndRotation(cursor.position + new Vector3(0, 0, 2.5f), cursor.rotation);
-                new_squirrel.transform.localScale *= 0.1f;
+                new_squirrel.transform.localScale *= 0.08f;
 
-                new_squirrel.GetComponent<isSquirreal>().originalPos = cursor.position - Vector3.up * 5;
                 new_squirrel.GetComponent<isSquirreal>().tree = tree; // should be unnecessary
             }
         }
