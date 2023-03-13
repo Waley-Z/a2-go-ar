@@ -1,10 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+using UnityEngine.XR.ARFoundation;
+[RequireComponent(typeof(ARTrackedImageManager))]
 
 public class ImageBonus : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    private bool isBonusActivated = false;
+    private void Awake()
+    {
+        isBonusActivated = false;
+    }
     void Start()
     {
         
@@ -14,5 +22,11 @@ public class ImageBonus : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnEnable()
+    {
+        if (!isBonusActivated)
+            InventoryManager.Currency += 10;
+        isBonusActivated = true;
     }
 }

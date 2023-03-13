@@ -1221,6 +1221,7 @@ GameObject:
   - component: {fileID: 4790038783193517927}
   - component: {fileID: 2451720629037639022}
   - component: {fileID: 7154685053526768893}
+  - component: {fileID: -8886882379023019042}
   m_Layer: 0
   m_Name: squirrel
   m_TagString: Untagged
@@ -1271,6 +1272,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.61, z: 1.49}
   m_Center: {x: 0, y: 0.3, z: 0.3}
+--- !u!95 &-8886882379023019042
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673298624880166469}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7e667974fd3eb774f956340c67967183, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &7722610170416337368
 GameObject:
   m_ObjectHideFlags: 0

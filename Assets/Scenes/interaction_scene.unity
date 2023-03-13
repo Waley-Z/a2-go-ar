@@ -733,6 +733,8 @@ GameObject:
   - component: {fileID: 388525035}
   - component: {fileID: 388525036}
   - component: {fileID: 388525037}
+  - component: {fileID: 388525039}
+  - component: {fileID: 388525038}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -854,6 +856,36 @@ MonoBehaviour:
   gameobject_to_spawn_2: {fileID: 7082275795938471698, guid: 321da749f8619eb45a3d6f0135cb0cc4,
     type: 3}
   spawn_sound_effect: {fileID: 8300000, guid: ce408681c72ca4e4695251acf937779c, type: 3}
+--- !u!114 &388525038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388525029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3baf6a17fdc0c459cae2ade0f7d1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBonusActivated: 0
+--- !u!114 &388525039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388525029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedLibrary: {fileID: 11400000, guid: ea5f588cbec170148a4874c91cc774e7,
+    type: 2}
+  m_MaxNumberOfMovingImages: 4
+  m_TrackedImagePrefab: {fileID: 1532912105900848832, guid: 0d7c59f516a00e149bad67861d8a56d2,
+    type: 3}
 --- !u!1001 &470058348
 PrefabInstance:
   m_ObjectHideFlags: 0
