@@ -15,6 +15,6 @@ public class isCurrencyText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tmpUI.text = "Currency: $ " + InventoryManager.Currency;
+        tmpUI.text = "$ " + (int)InventoryManager.Currency;
     }
 }
