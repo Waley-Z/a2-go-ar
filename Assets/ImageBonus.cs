@@ -8,11 +8,25 @@ using UnityEngine.XR.ARFoundation;
 public class ImageBonus : MonoBehaviour
 {
     [SerializeField]
-    
+    private ARTrackedImageManager trackedImageManager;
+
+    private void Awake()
+    {
+        trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
+    }
+
     private void OnEnable()
     {
-        if (!InventoryManager.isBonusActivated)
-            InventoryManager.Currency += 100;
-        InventoryManager.isBonusActivated = true;
+        trackedImageManager.trackedImagesChanged += oneTimeBonus;
+    }
+
+    private void oneTimeBonus(ARTrackedImagesChangedEventArgs eventArgs)
+    {
+        foreach (ARTrackedImage trakedImage in eventArgs.added)
+        {
+            if (!InventoryManager.isBonusActivated)
+                InventoryManager.Currency += 100;
+            InventoryManager.isBonusActivated = true;
+        }
     }
 }

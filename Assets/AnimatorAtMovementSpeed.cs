@@ -20,7 +20,7 @@ public class AnimatorAtMovementSpeed : MonoBehaviour
         Vector3 delta = current_position - previous_position;
         float movement_speed = delta.magnitude;
 
-        float movement_ratio = movement_speed / 0.0728f;
+        float movement_ratio = movement_speed * 150f;
         animator.speed = movement_ratio;
 
         previous_position = current_position;
