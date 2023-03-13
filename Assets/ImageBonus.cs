@@ -8,10 +8,9 @@ using UnityEngine.XR.ARFoundation;
 public class ImageBonus : MonoBehaviour
 {
     [SerializeField]
-    private bool isBonusActivated = false;
+    
     private void Awake()
     {
-        isBonusActivated = false;
     }
     void Start()
     {
@@ -25,8 +24,8 @@ public class ImageBonus : MonoBehaviour
     }
     private void OnEnable()
     {
-        if (!isBonusActivated)
+        if (!InventoryManager.isBonusActivated)
             InventoryManager.Currency += 10;
-        isBonusActivated = true;
+        InventoryManager.isBonusActivated = true;
     }
 }

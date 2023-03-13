@@ -9,7 +9,7 @@ public class InventoryManager : Manager<InventoryManager>
     public static List<Tree> Trees = new();
     public static Dictionary<Tree.TreeType, bool> Discovered = new();
     public static Dictionary<Tree.TreeType, int> Seeds = new();
-
+    public static bool isBonusActivated = false;
     public TreeConfig[] TreeConfigs;
  
     public static float Currency = 30f;
