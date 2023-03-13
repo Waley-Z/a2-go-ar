@@ -23,6 +23,11 @@ public class IsLandmark : MonoBehaviour
     void Update()
     {
         Vector3 pos = map.GeoToWorldPosition(lat_long_position, queryHeight: false);
+        if (pos == Vector3.zero)
+        {
+            transform.position = new Vector3(0, 100, 0);
+            return;
+        }
         pos.y = 1.5f;
         transform.position = pos;
         transform.RotateAround(transform.position, Vector3.up, 20 * Time.deltaTime);
