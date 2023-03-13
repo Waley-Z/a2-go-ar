@@ -209,7 +209,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8030620}
-  m_LocalRotation: {x: 0.35248318, y: -0.30134824, z: 0.12102575, w: 0.877666}
+  m_LocalRotation: {x: 0.3524832, y: -0.3013482, z: 0.12102573, w: 0.87766606}
   m_LocalPosition: {x: 73.714226, y: 130, z: -94.69009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -588,9 +588,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 130, z: -120}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -709,7 +709,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244145300}
-  m_LocalRotation: {x: 0.35248318, y: -0.30134824, z: 0.121025756, w: 0.877666}
+  m_LocalRotation: {x: 0.35248318, y: -0.30134818, z: 0.12102572, w: 0.87766606}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1599,7 +1599,7 @@ PrefabInstance:
     - target: {fileID: 114275890671072080, guid: 35ce2bb4caba9434db5e656796b632b1,
         type: 3}
       propertyPath: MoveSpeed
-      value: 0.004
+      value: 0.0025
       objectReference: {fileID: 0}
     - target: {fileID: 114472907270853152, guid: 35ce2bb4caba9434db5e656796b632b1,
         type: 3}
@@ -1961,9 +1961,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 130, z: -120}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -2305,9 +2305,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 130, z: -120}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -2832,7 +2832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1962332872
 RectTransform:
   m_ObjectHideFlags: 0
