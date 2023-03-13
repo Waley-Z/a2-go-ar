@@ -47,7 +47,7 @@ public class FreeLookCameraController : MonoBehaviour
 
         }
 
-        if (Input.touchCount == 1)
+        if (Input.touchCount == 1 && Input.GetTouch(0).position.y > 350)
         {
             Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
             fcam.m_XAxis.Value += touchDeltaPosition.x * XAxisModifierSpeed;

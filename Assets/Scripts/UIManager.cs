@@ -21,7 +21,7 @@ public class UIManager : Manager<UIManager>
     public IEnumerator showSpawnText()
     {
         spawnText.SetActive(true);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         spawnText.SetActive(false);
     }
 }

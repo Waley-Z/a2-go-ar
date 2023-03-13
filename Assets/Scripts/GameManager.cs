@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Mapbox.Unity.Map;
@@ -16,8 +15,10 @@ public class GameManager : Manager<GameManager>
 
     public GameScene[] SceneArray;
     public Image BlackScreen;
-    public static Tree nearestTree; // The nearest tree shown in the inventory mode
-    public static int nearestTreeIndex;
+    public static SceneType CurrentScene { get => getSceneType(SceneManager.GetActiveScene().name); }
+    // The nearest tree shown in the inventory mode, updated each time switching mode
+    public static Tree nearestTree { get => nearestTreeIndex == -1 ? null : InventoryManager.Trees[nearestTreeIndex]; }
+    public static int nearestTreeIndex = -1;
     public static Vector2d targetPos; // AR cursor position
 
     [System.Serializable]
@@ -43,11 +44,6 @@ public class GameManager : Manager<GameManager>
     private void Start()
     {
         StartSceneMusic(getSceneType(SceneManager.GetActiveScene().name));
-    }
-
-    public static void updateTargetPos(Vector2d pos)
-    {
-        targetPos = pos;
     }
 
     public static SceneType getSceneType(string name)
@@ -102,11 +98,9 @@ public class GameManager : Manager<GameManager>
                 if (nearestTree != null && nearestTree.withSquirrel)
                 {
                     SoundManager.StartBGM(SoundManager.Sound.MusicBattle);
-
                 }
                 else
                 {
-
                     SoundManager.StartBGM(SoundManager.Sound.MusicInteraction);
                 }
                 break;
@@ -128,7 +122,7 @@ public class GameManager : Manager<GameManager>
             Instance.BlackScreen.color = new Color(0, 0, 0, alpha);
             yield return null;
         }
-    
+
         Instance.BlackScreen.gameObject.SetActive(targetAlpha > 0);
         yield break;
     }

@@ -1,72 +1,67 @@
 using Mapbox.Utils;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Mapbox.Unity.Map;
 
 public class InventoryManager : Manager<InventoryManager>
 {
     public static List<Tree> Trees = new();
-    public static Dictionary<Tree.TreeType, bool> Discovered;
-    public static float Currency = 30f;
+    public static Dictionary<Tree.TreeType, bool> Discovered = new();
     public static Dictionary<Tree.TreeType, int> Seeds = new();
+
+    public TreeConfig[] TreeConfigs;
+ 
+    public static float Currency = 30f;
     public static int numAcorns = 0;
-    public float time = 0;
     public float squirrelSpawnTime = 10f;
-    AbstractMap map;
-    public GameObject squirrelPrefab;
-    public float squirrelTimer = 0;
+    public GameObject SquirrelPrefab;
 
     void Start()
     {
-        Discovered = new Dictionary<Tree.TreeType, bool>();
-        Discovered[Tree.TreeType.T1] = true;
         foreach (Tree.TreeType tree_type in System.Enum.GetValues(typeof(Tree.TreeType)))
         {
-            Seeds.Add(tree_type, 3);
+            Seeds.Add(tree_type, 0);
+            Discovered[tree_type] = false;
         }
-        InvokeRepeating("updateTreeRev", 1.0f, 5f);
+        Seeds[Tree.TreeType.T1] = 3;
+        Discovered[Tree.TreeType.T1] = true;
+        InvokeRepeating("AdvanceTreeGrowth", 1f, 5f);
+        InvokeRepeating("spawnSquirrel", squirrelSpawnTime, squirrelSpawnTime);
     }
 
-    
     private void Update()
     {
-        map = GameObject.Find("LocationBasedGame").transform.Find("Map").GetComponent<AbstractMap>();
-        time += Time.deltaTime;
-        if (time >= 1)
+        foreach (Tree tree in Trees)
         {
-            time = 0;
-            AdvanceTreeGrowth();
-            updateTreeRev();
-
+            if (tree.growth_progress >= 1f)
+            {
+                Currency += tree.revenue_per_tick_upon_adulthood;
+            }
         }
-        squirrelTimer += Time.deltaTime;
-        //spawn a squirrel every squirrelSpawnTime s
-        if (squirrelTimer >= squirrelSpawnTime)
-        {
-            squirrelTimer = 0;
-            spawnSquirrel();
-        }
-        
     }
 
     void spawnSquirrel()
     {
         int index = Mathf.RoundToInt(Random.value * (Trees.Count - 1));
+        if (Trees[index].withSquirrel)
+            return;
         Trees[index].withSquirrel = true;
-        Vector3 posTree = map.GeoToWorldPosition(Trees[index].lat_long_coordinates, queryHeight: false);
-        GameObject new_squirrel = Instantiate(squirrelPrefab, posTree + new Vector3(5f, 0, 0), Quaternion.Euler(-90, 0, 0));
-        new_squirrel.GetComponent<isSquirreal>().lat_long_coordinates = Trees[index].lat_long_coordinates;
-        Debug.Log("spawn a squirrel  "+index);
+
+        GameObject ExplorationSpawnerGO = GameObject.Find("ExplorationSpawner");
+        if (ExplorationSpawnerGO != null)
+        {
+            ExplorationSpawner es = ExplorationSpawnerGO.GetComponent<ExplorationSpawner>();
+            es.SpawnExplorationSquirrelAtTree(Trees[index]);
+        }
     }
 
     // Seed methods
-    public static bool UseSeeds(Tree.TreeType treeType, int exspense = 1)
+    public static bool UseSeeds(Tree.TreeType treeType, int expense = 1)
     {
-        if (exspense <= Seeds[treeType])
+        if (expense <= Seeds[treeType])
         {
-            Seeds[treeType] -= exspense;
+            Seeds[treeType] -= expense;
             return true;
         }
         else
@@ -75,23 +70,14 @@ public class InventoryManager : Manager<InventoryManager>
         }
     }
 
-    // Tree methods
-    void updateTreeRev()
+    public static int AddTree(Tree.TreeType _tree_type, Vector2d _lat_long_coord)
     {
-        foreach (Tree tree in Trees)
-        {
-            if (tree.growth_progress == 1)
-                Currency += tree.revenue_per_tick_upon_adulthood;
-        }
-    }
-
-    public static int SpawnTree(Tree.TreeType _tree_type, Vector2d _lat_long_coord, float _growth_proress, float _rev_per_tick)
-    {
-        Trees.Add(new Tree(_tree_type, _lat_long_coord, _growth_proress, _rev_per_tick));
+        print("plant tree at " + _lat_long_coord);
+        Trees.Add(new Tree(_tree_type, _lat_long_coord));
         return Trees.Count - 1;
     }
 
-    public static void AdvanceTreeGrowth()
+    public void AdvanceTreeGrowth()
     {
         foreach (Tree tree in Trees)
         {
@@ -102,13 +88,26 @@ public class InventoryManager : Manager<InventoryManager>
             }
         }
     }
+
+    public TreeConfig getTreeConfig(Tree.TreeType treeType)
+    {
+        foreach (TreeConfig tc in TreeConfigs)
+        {
+            if (tc.treeType == treeType)
+            {
+                return tc;
+            }
+        }
+        Debug.LogError($"Config not found: {treeType}");
+        return TreeConfigs[0];
+    }
 }
 
 public class Tree
 {
     public enum TreeType
     {
-        T1, // placeholder
+        T1,
         T2,
         T3,
         T4,
@@ -118,20 +117,31 @@ public class Tree
     }
 
     public TreeType tree_type;
-    public float growth_progress = 0.0f;
     public Vector2d lat_long_coordinates;
-    public float revenue_per_tick_upon_adulthood = 0.1f;
-    public float cost = 5.0f;
-    public Vector3 original_scale;
+
+    public float revenue_per_tick_upon_adulthood;
     public GameObject treePrefab;
+    public float cost;
+ 
+    public float growth_progress = 0.0f;
     public bool withSquirrel = false;
 
-
-    public Tree(TreeType _tree_type, Vector2d _lat_long_coord, float _growth_proress, float _rev_per_tick)
+    public Tree(TreeType _tree_type, Vector2d _lat_long_coord)
     {
         tree_type = _tree_type;
         lat_long_coordinates = _lat_long_coord;
-        growth_progress = _growth_proress;
-        revenue_per_tick_upon_adulthood = _rev_per_tick;
+        TreeConfig tc = InventoryManager.Instance.getTreeConfig(tree_type);
+        revenue_per_tick_upon_adulthood = tc.revenue_per_tick_upon_adulthood;
+        treePrefab = tc.treePrefab;
+        cost = tc.cost;
     }
+}
+
+[System.Serializable]
+public class TreeConfig
+{
+    public Tree.TreeType treeType;
+    public GameObject treePrefab;
+    public float revenue_per_tick_upon_adulthood = 0.1f;
+    public float cost = 5.0f;
 }

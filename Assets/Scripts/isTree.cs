@@ -7,18 +7,26 @@ using Mapbox.Unity.Map;
 public class IsTree : MonoBehaviour
 {
     public Tree tree;
-    Vector3 offset;
+    [SerializeField] Vector3 original_scale;
+    [SerializeField] Vector3 offset;
     AbstractMap map;
+
     void Start()
     {
-        map = GameObject.Find("LocationBasedGame").transform.Find("Map").GetComponent<AbstractMap>();
-        offset = new Vector3(Random.value-0.5f, 0f, Random.value-0.5f).normalized * 5f;
+        if (GameManager.CurrentScene == GameManager.SceneType.Exploration)
+        {
+            map = GameObject.Find("LocationBasedGame").transform.Find("Map").GetComponent<AbstractMap>();
+        }
+        offset = new Vector3(Random.value - 0.5f, 0f, Random.value - 0.5f).normalized * 10f;
+        original_scale = transform.localScale;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.position = map.GeoToWorldPosition(tree.lat_long_coordinates, queryHeight: false) + offset;
-        //transform.localScale = tree.growth_progress * transform.localScale; // TODO
+        if (map != null)
+        {
+            transform.position = map.GeoToWorldPosition(tree.lat_long_coordinates, queryHeight: false) + offset;
+        }
+        transform.localScale = original_scale * (0.3f + tree.growth_progress);
     }
 }

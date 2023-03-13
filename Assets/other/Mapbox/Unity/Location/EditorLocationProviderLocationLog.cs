@@ -41,8 +41,8 @@
 
         private void Update()
         {
-			GameManager.updateTargetPos(_currentLocation.LatitudeLongitude);
-			//Debug.Log(_currentLocation.LatitudeLongitude);
+			GameManager.targetPos = _currentLocation.LatitudeLongitude;
+			Debug.Log(GameManager.targetPos);
 			Vector2d deltaVec = Vector2d.zero;
 			if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
 			{
