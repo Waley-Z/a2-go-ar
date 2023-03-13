@@ -43,6 +43,8 @@ public class InventoryManager : Manager<InventoryManager>
 
     void spawnSquirrel()
     {
+        if (Trees.Count == 0)
+            return;
         int index = Mathf.RoundToInt(Random.value * (Trees.Count - 1));
         if (Trees[index].withSquirrel)
             return;
