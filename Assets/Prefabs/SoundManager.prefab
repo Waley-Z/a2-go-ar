@@ -57,6 +57,18 @@ MonoBehaviour:
     mixer: {fileID: -6090420109218592179, guid: abb9717b694f45e4a9c01b45ce53613c,
       type: 2}
     audioClip: {fileID: 8300000, guid: 30b7a457ccafdf4469b9b2361fe858aa, type: 3}
+  - sound: 3
+    mixer: {fileID: -1855018869069099942, guid: abb9717b694f45e4a9c01b45ce53613c,
+      type: 2}
+    audioClip: {fileID: 8300000, guid: 9663eec5167289445b8c6581201e3ff1, type: 3}
+  - sound: 4
+    mixer: {fileID: -1855018869069099942, guid: abb9717b694f45e4a9c01b45ce53613c,
+      type: 2}
+    audioClip: {fileID: 8300000, guid: 175157b22640ac040aa2ac9284701abf, type: 3}
+  - sound: 5
+    mixer: {fileID: -1855018869069099942, guid: abb9717b694f45e4a9c01b45ce53613c,
+      type: 2}
+    audioClip: {fileID: 8300000, guid: 0f721e6cc1ae6094aa350b409610214a, type: 3}
   snapShotMain: {fileID: 24500006, guid: abb9717b694f45e4a9c01b45ce53613c, type: 2}
   snapShotPause: {fileID: -869125258791621446, guid: abb9717b694f45e4a9c01b45ce53613c,
     type: 2}

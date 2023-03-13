@@ -19,13 +19,18 @@ namespace Mapbox.Unity.Location
 	/// </summary>
 	public class DeviceLocationProvider : AbstractLocationProvider
 	{
+#if !UNITY_EDITOR
+        private void Update()
+        {
+			GameManager.targetPos = _currentLocation.LatitudeLongitude;
+        }
+#endif
 
-
-		/// <summary>
-		/// Using higher value like 500 usually does not require to turn GPS chip on and thus saves battery power. 
-		/// Values like 5-10 could be used for getting best accuracy.
-		/// </summary>
-		[SerializeField]
+        /// <summary>
+        /// Using higher value like 500 usually does not require to turn GPS chip on and thus saves battery power. 
+        /// Values like 5-10 could be used for getting best accuracy.
+        /// </summary>
+        [SerializeField]
 		[Tooltip("Using higher value like 500 usually does not require to turn GPS chip on and thus saves battery power. Values like 5-10 could be used for getting best accuracy.")]
 		public float _desiredAccuracyInMeters = 1.0f;
 
