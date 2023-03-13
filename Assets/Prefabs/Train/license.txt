@@ -1,0 +1,11 @@
+Model Information:
+* title:	EMD GP7 Western Pacific 713
+* source:	https://sketchfab.com/3d-models/emd-gp7-western-pacific-713-1c89cb9f2c224b78b6fea50f82e042c3
+* author:	Jesper Landin (https://sketchfab.com/JesperLandin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "EMD GP7 Western Pacific 713" (https://sketchfab.com/3d-models/emd-gp7-western-pacific-713-1c89cb9f2c224b78b6fea50f82e042c3) by Jesper Landin (https://sketchfab.com/JesperLandin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

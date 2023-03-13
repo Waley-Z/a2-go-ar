@@ -28,6 +28,7 @@ public class SoundManager : Manager<SoundManager>
         DefeatSquirrel,
         PlantSeed,
         LaunchAcorn,
+        TrainHorn
     }
 
     public static GameObject BGM_loop;
@@ -51,6 +52,7 @@ public class SoundManager : Manager<SoundManager>
         //soundMaxTimerDic[Sound.BlockExplostion] = 0.05f;
         //soundMaxTimerDic[Sound.BombExplosion] = 0.05f;
         //soundMaxTimerDic[Sound.MachineGunFire] = 0.05f;
+        soundMaxTimerDic[Sound.TrainHorn] = 10f;
     }
 
     // play one shot

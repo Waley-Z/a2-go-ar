@@ -1,0 +1,11 @@
+Model Information:
+* title:	Train - Intercity 125 Executive with Buffers
+* source:	https://sketchfab.com/3d-models/train-intercity-125-executive-with-buffers-d42ffaa6d0d14f7fadad06e000d6d2a3
+* author:	timblewee (https://sketchfab.com/timblewee)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Train - Intercity 125 Executive with Buffers" (https://sketchfab.com/3d-models/train-intercity-125-executive-with-buffers-d42ffaa6d0d14f7fadad06e000d6d2a3) by timblewee (https://sketchfab.com/timblewee) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
