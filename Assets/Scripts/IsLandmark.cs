@@ -8,16 +8,29 @@ using Mapbox.Unity.Map;
 public class IsLandmark : MonoBehaviour
 {
     public Vector2d lat_long_position;
-    public AbstractMap map;
-    // Start is called before the first frame update
+    AbstractMap map;
+
+    public Tree.TreeType UnlockTreeType;
+    public GameObject DetailPage;
+
     void Start()
     {
-        
+        map = GameObject.Find("LocationBasedGame").transform.Find("Map").GetComponent<AbstractMap>();
+        float randomRotY = Random.value * 360;
+        transform.rotation = Quaternion.Euler(0, randomRotY, 0);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.position = map.GeoToWorldPosition(lat_long_position, queryHeight: false);
+        Vector3 pos = map.GeoToWorldPosition(lat_long_position, queryHeight: false);
+        pos.y = 1.5f;
+        transform.position = pos;
+        transform.RotateAround(transform.position, Vector3.up, 20 * Time.deltaTime);
+    }
+
+    public void OnClick()
+    {
+        InventoryManager.Discovered[UnlockTreeType] = true;
+        DetailPage.SetActive(true);
     }
 }

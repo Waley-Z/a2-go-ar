@@ -37,7 +37,7 @@
 			_logReader = new LocationLogReader(_locationLogFile.bytes);
 			_locationEnumerator = _logReader.GetLocations();
         }
-        static Vector2d	currentLatitudeLongitude = new Vector2d(42.279594, -83.732124);
+        static Vector2d	currentLatitudeLongitude = new Vector2d(42.292624659455875, -83.71627841730987);
 
         private void Update()
         {

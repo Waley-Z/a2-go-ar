@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIManager : Manager<UIManager>
 {
-    public GameObject spawnText;
+    GameObject spawnText;
 
     private void Start()
     {
